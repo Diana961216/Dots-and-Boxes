@@ -26,6 +26,12 @@ for (let i = 0; i < 25; i++) {
 }
 console.log(allDots)
 
+const canvasElement = document.querySelector('canvas')
+const ctx = canvasElement.getContext('2d')
+
+const numDots = 25
+
+
 
 /*-------------------------------- Functions --------------------------------*/
 const init = () => {
@@ -41,8 +47,11 @@ const init = () => {
     isTie = false
     render()
   }
+
+
   const render = () => {
       console.log('render');
   }
   
+
 /*----------------------------- Event Listeners -----------------------------*/

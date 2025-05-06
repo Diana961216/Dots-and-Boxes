@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./js/app.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>Dots and Boxes</title>
+  </head>
+  <body>
+    <h1>Dots and Boxes</h1>
+    <p class="welcome">
+      Welcome to Dots and Boxes!Can you outsmart your opponent and trap the most
+      boxes? Let's find out!
+    </p>
+    <h2 class="how-to">How to Play</h2>
+    <p class="instructions">
+      To play, you and your opponent take turns drawing lines between two
+      adjacent dots, either up, down, left, or right. When you complete the
+      fourth side of a square, you own that box — and you even get another turn!
+      Keep going until all the boxes are filled. Whoever ends up with the most
+      boxes at the end is the winner and reigning box champion. Think ahead,
+      because one careless move can set your opponent up to grab a whole chain
+      of boxes! Use your wits, make your moves count, and aim to trap more boxes
+      than your rival. Ready to rule the grid?
+    </p>
+    <div class="container">
+      <div class="game-board"></div>
+      <button class="reset-button">Reset Game</button>
+      <canvas class="gameCanvas" width="400" height="400"></canvas>
+    </div>
+    <div class="scoreboard">
+      <div class="player-score">
+        <h2>Player 1</h2>
+        <p class="player1-score">0</p>
+      </div>
+      <div class="player-score">
+        <h2>Player 2</h2>
+        <p class="player2-score">0</p>
+      </div>
+    </div>
+  </body>
+</html>

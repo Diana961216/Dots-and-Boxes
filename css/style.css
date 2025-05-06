@@ -10,37 +10,46 @@ h1 {
     color: #2E7D32;
 
 }
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     padding: 0 20px;
     width: 100%;
-}
-
-.dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    margin-right: 10px;
-    background-color: #222222;
-    margin: 0;
-}
-
-.dot:hover {
-    background-color: #FF4C4C;
-    cursor: pointer;
-}
-
-.game-board {
+  }
+  
+  .game-board {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     margin-top: 20px;
-}
+    position: relative;
+  
+  }
+  .gameCanvas {
+    position: absolute;
+  }
 
-.reset-button {
+  .dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #222222;
+    margin: 0;
+    margin-right: 10px;
+  }
+  
+  .dot:hover {
+    background-color: #FF8C00;
+    cursor: pointer;
+  }
+
+  .dot.clicked {
+    background-color: #FF4C4C;
+  }
+
+  .reset-button {
     background-color: #2ECC71;
     color: white;
     padding: 10px 20px;
@@ -49,12 +58,13 @@ h1 {
     font-size: 16px;
     margin-top: 40px;
     border-radius: 5px;
-}
-.reset-button:hover {
+  }
+  
+  .reset-button:hover {
     background-color: #27AE60;
-}
+  }
 
-.scoreboard {
+  .scoreboard {
     width: 100%;
     max-width: 600px;
     font-size: 18px;
@@ -66,14 +76,14 @@ h1 {
     margin-top: 20px;
     gap: 500px;
   }
-
-.player-score {
+  
+  .player-score {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-.how-to, .instructions, .welcome {
+  .how-to,.instructions, .welcome {
   margin-top: 20px;
   font-size: 18px;
   color: #2E7D32;
@@ -85,8 +95,6 @@ h1 {
 }
 
 .instructions {
- margin-left: 5.2rem;
- margin-right: 5.2rem;
-
+  margin-left: 5.2rem;
+  margin-right: 5.2rem;
 }
-

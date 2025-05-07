@@ -9,9 +9,9 @@ let board = [
     "", "", "", "", "",
     "", "", "", "", "",
     "", "", "", "", "",
-  ]  
-  let isWinner 
-  let isTie
+]  
+let isWinner 
+let isTie
 
 /*------------------------ Cached Element References ------------------------*/
 const gameBoardEl = document.querySelector('.game-board')
@@ -28,12 +28,29 @@ console.log(allDots)
 
 const canvasElement = document.querySelector('canvas')
 const ctx = canvasElement.getContext('2d')
+canvasElement.width = canvasElement.offsetWidth;
+canvasElement.height = canvasElement.offsetHeight;
+
+const boardContainerEl = document.querySelector('.board-container')
+canvasElement.width = boardContainerEl.offsetWidth;
+canvasElement.height = boardContainerEl.offsetHeight;
 
 const numDots = 25
 
 
-
 /*-------------------------------- Functions --------------------------------*/
+const isAdjacent = (i1, i2) => {
+  i1 = Number(i1)
+  i2 = Number(i2)
+  const diff = Math.abs(i1 - i2)
+
+  if (Math.floor(i1 / 5) === Math.floor(i2 / 5) && diff === 1) return true
+
+  if (diff === 5) return true
+
+  return false
+}
+
 const init = () => {
     board = [
       "", "", "", "", "",
@@ -49,22 +66,24 @@ const init = () => {
   }
 
 
-  const render = () => {
-      console.log('render');
-  }
-  
+const render = () => {
+    console.log('render');
+}
 
 
 let selectedDots =[]
-allDots.forEach(dot =>{
-  dot.addEventListener('click', (e) =>{
+allDots.forEach(dot => {
+  dot.addEventListener('click', (e) => {
     const index = e.target.dataset.index
     selectedDots.push(index)
     dot.classList.add('clicked')
-   
 
-    if(selectedDots.length === 2) {
-      drawLine(selectedDots[0], selectedDots[1])
+    if (selectedDots.length === 2) {
+      if (isAdjacent(selectedDots[0], selectedDots[1])) {
+        drawLine(selectedDots[0], selectedDots[1])
+      } else {
+        console.log('not adjacent')
+      }
       selectedDots = []
       allDots.forEach(d => d.classList.remove('clicked'))
     }
@@ -73,8 +92,8 @@ allDots.forEach(dot =>{
 
 
 const drawLine = (index1, index2) => {
-  const dot1 = allDots[index1]
-  const dot2 = allDots[index2]
+  const dot1 = allDots[Number(index1)]
+  const dot2 = allDots[Number(index2)]
 
   const rect1 = dot1.getBoundingClientRect()
   const rect2 = dot2.getBoundingClientRect()

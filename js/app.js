@@ -108,9 +108,22 @@ const drawLine = (index1, index2) => {
   ctx.beginPath()
   ctx.moveTo(x1, y1)
   ctx.lineTo(x2, y2)
-  ctx.strokeStyle = 'red'
+  
+  if (turn === 'X') {
+    ctx.strokeStyle = '#D32F2F'
+  } else {
+    ctx.strokeStyle = '#1976D2'
+  }
   ctx.stroke()
+  changeTurn()
 };
 
-
+const changeTurn = () => {
+    if (turn === 'X') {
+        turn = 'O'
+    }
+    else {
+        turn = 'X'
+    }
+}
 /*----------------------------- Event Listeners -----------------------------*/

@@ -89,6 +89,9 @@ const numDots = 25
 const score1El = document.querySelector('.player1-score')
 const score2El = document.querySelector('.player2-score')
 
+const playAgainBtn = document.createElement('button')
+const gameOverText = document.createElement('div')
+
 
 /*-------------------------------- Functions --------------------------------*/
 const isAdjacent = (i1, i2) => {
@@ -241,6 +244,8 @@ const updateScore = (player) => {
 const checkForTie = () => {
   if (score1El.textContent === '8' && score2El.textContent === '8') {
     console.log("It's a tie!")
+    isTie = true
+    gameOver()
     init()  
   }
 }
@@ -253,11 +258,15 @@ const checkForWinner = () => {
   if (score1 + score2 === totalBoxes) {
     if (score1 > score2) {
       console.log('Player 1 wins!')
+      isWinner = true
     } else if (score2 > score1) {
       console.log('Player 2 wins!')
+      isWinner = true
     } else {
       console.log("It's a tie!")
+      isTie = true
     }
+    gameOver()
     init()
   }
 }
@@ -271,5 +280,50 @@ resetButton.addEventListener('click', () => {
     score2El.textContent = '0'
     init()
 })
+
+const gameOver = () =>{
+  if(isWinner || isTie){
+    ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
+    allDots.forEach(dot => dot.classList.remove('clicked'))
+    drawnLines.clear()
+    score1El.textContent = '0'
+    score2El.textContent = '0'
+    gameBoardEl.style.display = 'none'
+
+   
+    gameOverText.classList.add('game-over-text')
+    gameOverText.textContent = isWinner ? `${turn} wins!` : "It's a tie!"
+    gameOverText.style.position = 'absolute'
+    gameOverText.style.top = '50%'
+    gameOverText.style.left = '50%'
+    gameOverText.style.transform = 'translate(-50%, -50%)'
+    gameOverText.style.fontSize = '24px'
+    gameOverText.style.color = '#000'
+    gameOverText.style.zIndex = '1000'
+    document.body.appendChild(gameOverText)
+
+    
+    playAgainBtn.textContent = "Play Again"
+    playAgainBtn.style.position = 'absolute'
+    playAgainBtn.style.top = '60%'
+    playAgainBtn.style.left = '50%'
+    playAgainBtn.style.transform = 'translateX(-50%)'
+    playAgainBtn.style.padding = '10px 20px'
+    playAgainBtn.style.fontSize = '18px'
+    playAgainBtn.style.cursor = 'pointer'
+    playAgainBtn.style.zIndex = '1000'
+    playAgainBtn.style.backgroundColor = '#1976D2'
+    playAgainBtn.style.radius = '5px'
+    document.body.appendChild(playAgainBtn)
+  }
+  
+  playAgainBtn.addEventListener('click', () => {
+    gameOverText.remove()
+    playAgainBtn.remove()
+    init()
+  })
+}
+
+
 
 /*----------------------------- Event Listeners -----------------------------*/

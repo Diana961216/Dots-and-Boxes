@@ -200,6 +200,7 @@ const checkForBoxCompletion = (index1, index2) => {
   if (!boxCompleted) {
     changeTurn()
   }
+  
 }
 
 const fillBox = (box, boxIndex, player) => {
@@ -218,5 +219,25 @@ const fillBox = (box, boxIndex, player) => {
   const div = document.createElement('div')
   div.id = `box-${boxIndex}`
   document.body.appendChild(div)
+  updateScore(player)
 }
+
+const updateScore = (player) => {
+  const score1El = document.querySelector('.player1-score')
+  const score2El = document.querySelector('.player2-score')
+
+  
+  if (player === 'X') {
+    score1El.textContent = parseInt(score1El.textContent || '0') + 1
+  } else {
+    score2El.textContent = parseInt(score2El.textContent || '0') + 1
+  }
+
+  
+  if (parseInt(score1El.textContent) > 8 || parseInt(score2El.textContent) > 8) {
+    console.log(`Player ${player} wins!`)
+    init()  
+  }
+}
+
 /*----------------------------- Event Listeners -----------------------------*/

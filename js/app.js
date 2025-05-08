@@ -325,10 +325,16 @@ const gameOver = (winner = null) => {
     playAgainBtn.style.zIndex = '1000'
     playAgainBtn.style.backgroundColor = '#27AE60'
     playAgainBtn.style.radius = '5px'
+    playAgainBtn.style.color = 'white'
+    playAgainBtn.style.border = 'none'
+    playAgainBtn.style.borderRadius = '5px'
     document.body.appendChild(playAgainBtn)
   }
   
   playAgainBtn.addEventListener('click', () => {
+    gameBoardEl .style.display = 'grid'
+    gameBoardEl.style.gridTemplateColumns = 'repeat(5, 1fr)'
+    gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
     gameOverText.remove()
     playAgainBtn.remove()
     init()

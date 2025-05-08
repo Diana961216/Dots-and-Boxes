@@ -93,6 +93,8 @@ const playAgainBtn = document.createElement('button')
 const gameOverText = document.createElement('div')
 
 
+
+
 /*-------------------------------- Functions --------------------------------*/
 const isAdjacent = (i1, i2) => {
   i1 = Number(i1)
@@ -259,15 +261,17 @@ const checkForWinner = () => {
     if (score1 > score2) {
       console.log('Player 1 wins!')
       isWinner = true
+      gameOver('Player 1')
     } else if (score2 > score1) {
       console.log('Player 2 wins!')
       isWinner = true
+      gameOver('Player 2')
     } else {
       console.log("It's a tie!")
       isTie = true
+      gameOver()
     }
-    gameOver()
-    init()
+    
   }
 }
 
@@ -281,7 +285,7 @@ resetButton.addEventListener('click', () => {
     init()
 })
 
-const gameOver = () =>{
+const gameOver = (winner = null) => {
   if(isWinner || isTie){
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
     allDots.forEach(dot => dot.classList.remove('clicked'))
@@ -292,7 +296,14 @@ const gameOver = () =>{
 
    
     gameOverText.classList.add('game-over-text')
-    gameOverText.textContent = isWinner ? `${turn} wins!` : "It's a tie!"
+    if (winner) {
+      gameOverText.textContent = `${winner} wins!`
+      gameOverText.style.color = '#D32F2F'
+    } else {
+      gameOverText.textContent = "It's a tie!"
+      gameOverText.style.color = '#1976D2'
+    }
+
     gameOverText.style.position = 'absolute'
     gameOverText.style.top = '50%'
     gameOverText.style.left = '50%'
@@ -312,7 +323,7 @@ const gameOver = () =>{
     playAgainBtn.style.fontSize = '18px'
     playAgainBtn.style.cursor = 'pointer'
     playAgainBtn.style.zIndex = '1000'
-    playAgainBtn.style.backgroundColor = '#1976D2'
+    playAgainBtn.style.backgroundColor = '#27AE60'
     playAgainBtn.style.radius = '5px'
     document.body.appendChild(playAgainBtn)
   }

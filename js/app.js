@@ -262,5 +262,14 @@ const checkForWinner = () => {
   }
 }
 
+const resetButton = document.querySelector('.reset-button')
+resetButton.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
+    allDots.forEach(dot => dot.classList.remove('clicked'))
+    drawnLines.clear()
+    score1El.textContent = '0'
+    score2El.textContent = '0'
+    init()
+})
 
 /*----------------------------- Event Listeners -----------------------------*/

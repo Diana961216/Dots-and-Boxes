@@ -86,6 +86,9 @@ canvasElement.height = boardContainerEl.offsetHeight;
 
 const numDots = 25
 
+const score1El = document.querySelector('.player1-score')
+const score2El = document.querySelector('.player2-score')
+
 
 /*-------------------------------- Functions --------------------------------*/
 const isAdjacent = (i1, i2) => {
@@ -101,13 +104,8 @@ const isAdjacent = (i1, i2) => {
 }
 
 const init = () => {
-    board = [
-      "", "", "", "", "",
-      "", "", "", "", "",
-      "", "", "", "", "",
-      "", "", "", "", "",
-      "", "", "", "", "",
-    ]
+    board = Array(25).fill("")
+    drawnLines.clear()
     turn = "X"
     isWinner = false
     isTie = false
@@ -143,7 +141,8 @@ allDots.forEach(dot => {
 
 const drawLine = (index1, index2) => {
   const lineKey = [Math.min(index1, index2), Math.max(index1, index2)].join('-')
- drawnLines.add(lineKey);
+  if (drawnLines.has(lineKey)) return
+  drawnLines.add(lineKey);
   const dot1 = allDots[Number(index1)]
   const dot2 = allDots[Number(index2)]
 
@@ -218,26 +217,50 @@ const fillBox = (box, boxIndex, player) => {
 
   const div = document.createElement('div')
   div.id = `box-${boxIndex}`
-  document.body.appendChild(div)
+  div.style.position = 'absolute'
+  div.style.left = `${centerX}px`
+  div.style.top = `${centerY}px`
+  div.style.zIndex = '10'
+
+  document.querySelector('.board-container').appendChild(div)
   updateScore(player)
 }
 
 const updateScore = (player) => {
-  const score1El = document.querySelector('.player1-score')
-  const score2El = document.querySelector('.player2-score')
-
-  
+   
   if (player === 'X') {
     score1El.textContent = parseInt(score1El.textContent || '0') + 1
   } else {
     score2El.textContent = parseInt(score2El.textContent || '0') + 1
   }
+  checkForTie()
+  checkForWinner()
+ 
+}
 
-  
-  if (parseInt(score1El.textContent) > 8 || parseInt(score2El.textContent) > 8) {
-    console.log(`Player ${player} wins!`)
+const checkForTie = () => {
+  if (score1El.textContent === '8' && score2El.textContent === '8') {
+    console.log("It's a tie!")
     init()  
   }
 }
+
+const checkForWinner = () => {
+  const score1 = parseInt(score1El.textContent)
+  const score2 = parseInt(score2El.textContent)
+  const totalBoxes = 16;
+
+  if (score1 + score2 === totalBoxes) {
+    if (score1 > score2) {
+      console.log('Player 1 wins!')
+    } else if (score2 > score1) {
+      console.log('Player 2 wins!')
+    } else {
+      console.log("It's a tie!")
+    }
+    init()
+  }
+}
+
 
 /*----------------------------- Event Listeners -----------------------------*/

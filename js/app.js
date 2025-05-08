@@ -290,8 +290,8 @@ const gameOver = (winner = null) => {
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
     allDots.forEach(dot => dot.classList.remove('clicked'))
     drawnLines.clear()
-    score1El.textContent = '0'
-    score2El.textContent = '0'
+    score1El.textContent = `${score1El.textContent}`
+    score2El.textContent = `${score2El.textContent}`
     gameBoardEl.style.display = 'none'
 
    
@@ -335,6 +335,8 @@ const gameOver = (winner = null) => {
     gameBoardEl .style.display = 'grid'
     gameBoardEl.style.gridTemplateColumns = 'repeat(5, 1fr)'
     gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
+    score1El.textContent = '0'
+    score2El.textContent = '0'
     gameOverText.remove()
     playAgainBtn.remove()
     init()

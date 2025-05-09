@@ -124,11 +124,52 @@ h1 {
     gap: 500px;
   }
   
+  .player1-icon, .player2-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: absolute;
+    z-index: 2;
+  }
+
+  h2 {
+    font-size: 24px;
+    color: #2E7D32;
+    position: relative;
+    left: 80px;
+    bottom: 17px;
+    white-space: nowrap;
+  }
+
+  .p1 {
+    color: #D32F2F;
+  }
+  .p2 {
+    color: #1976D2;
+  }
+
   .player-score {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+ }
+
+  .player1-score {
+    color: #D32F2F;
+    position: relative;
+    left: 80px;
+    bottom: 40px;
   }
+
+  .player2-score {
+    color: #1976D2;
+    position: relative;
+    left: 80px;
+    bottom: 40px;
+  }
+ 
 
   .how-to,.instructions, .welcome {
   margin-top: 20px;

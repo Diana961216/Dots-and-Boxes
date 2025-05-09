@@ -92,6 +92,11 @@ const score2El = document.querySelector('.player2-score')
 const playAgainBtn = document.createElement('button')
 const gameOverText = document.createElement('div')
 
+const h1El = document.querySelector('h1')
+const welcomeEl = document.querySelector('.welcome')
+const howToPlayEl = document.querySelector('.how-to')
+const instructionsEl = document.querySelector('.instructions')
+
 
 
 
@@ -303,11 +308,28 @@ const gameOver = (winner = null) => {
     gameOverText.classList.add('game-over-text')
     if (winner) {
       gameOverText.textContent = `${winner} wins!`
-      gameOverText.style.color =  '#D32F2F'
+
+      if (winner === 'Player 1') {
+        gameOverText.style.color = '#D32F2F' 
+      } else if (winner === 'Player 2') {
+        gameOverText.style.color = '#1976D2' 
+      } else {
+        gameOverText.style.color = '#444'
+      }
+
     } else {
       gameOverText.textContent = "It's a tie!"
-      gameOverText.style.color = '#1976D2'
+      gameOverText.style.color = '#9E9E9E' 
     }
+
+    h1El.textContent = "Game Over"
+    h1El.style.fontSize = '2rem'
+    h1El.style.textAlign = 'center'
+    h1El.style.marginTop = '20px'
+    h1El.style.left = '51%'
+    instructionsEl.style.display = 'none'
+    howToPlayEl.style.display = 'none'
+    welcomeEl.style.display = 'none'
 
     document.body.appendChild(gameOverText)
 

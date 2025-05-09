@@ -345,6 +345,10 @@ const gameOver = (winner = null) => {
     gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
     score1El.textContent = '0'
     score2El.textContent = '0'
+    h1El.textContent = "Dots and Boxes"
+    instructionsEl.style.display = 'block'
+    howToPlayEl.style.display = 'block'
+    welcomeEl.style.display = 'block'
     gameOverText.remove()
     playAgainBtn.remove()
     init()

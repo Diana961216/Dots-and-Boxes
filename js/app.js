@@ -95,6 +95,10 @@ const gameOverText = document.createElement('div')
 
 
 
+
+
+
+
 /*-------------------------------- Functions --------------------------------*/
 const isAdjacent = (i1, i2) => {
   i1 = Number(i1)
@@ -293,41 +297,23 @@ const gameOver = (winner = null) => {
     score1El.textContent = `${score1El.textContent}`
     score2El.textContent = `${score2El.textContent}`
     gameBoardEl.style.display = 'none'
+       
 
    
     gameOverText.classList.add('game-over-text')
     if (winner) {
       gameOverText.textContent = `${winner} wins!`
-      gameOverText.style.color = '#D32F2F'
+      gameOverText.style.color =  '#D32F2F'
     } else {
       gameOverText.textContent = "It's a tie!"
       gameOverText.style.color = '#1976D2'
     }
 
-    gameOverText.style.position = 'absolute'
-    gameOverText.style.top = '50%'
-    gameOverText.style.left = '50%'
-    gameOverText.style.transform = 'translate(-50%, -50%)'
-    gameOverText.style.fontSize = '24px'
-    gameOverText.style.color = '#000'
-    gameOverText.style.zIndex = '1000'
     document.body.appendChild(gameOverText)
 
-    
+    playAgainBtn.classList.add('play-again-btn')
     playAgainBtn.textContent = "Play Again"
-    playAgainBtn.style.position = 'absolute'
-    playAgainBtn.style.top = '60%'
-    playAgainBtn.style.left = '50%'
-    playAgainBtn.style.transform = 'translateX(-50%)'
-    playAgainBtn.style.padding = '10px 20px'
-    playAgainBtn.style.fontSize = '18px'
-    playAgainBtn.style.cursor = 'pointer'
-    playAgainBtn.style.zIndex = '1000'
-    playAgainBtn.style.backgroundColor = '#27AE60'
-    playAgainBtn.style.radius = '5px'
-    playAgainBtn.style.color = 'white'
-    playAgainBtn.style.border = 'none'
-    playAgainBtn.style.borderRadius = '5px'
+   
     document.body.appendChild(playAgainBtn)
   }
   

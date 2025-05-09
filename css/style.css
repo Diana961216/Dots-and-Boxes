@@ -8,6 +8,7 @@ body {
 h1 {
     text-align: center;
     color: #2E7D32;
+    padding: 40px 20px 0;
 
 }
 .container {
@@ -72,7 +73,7 @@ h1 {
     display: inline-block;
   }
 
-  .reset-button {
+  .reset-button, .play-again-btn {
     background-color: #2ECC71;
     color: white;
     padding: 10px 20px;
@@ -81,10 +82,32 @@ h1 {
     font-size: 16px;
     margin-top: 40px;
     border-radius: 5px;
+    text-align: center;
   }
   
-  .reset-button:hover {
+  .play-again-btn {
+    text-align: center;
+    position: fixed;
+    top: 55%;
+    left: 51%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    padding: 10px 20px;
+    
+   }
+  
+  .reset-button:hover,.play-again-btn:hover {
     background-color: #27AE60;
+  }
+
+  .game-over-text {
+    position: absolute; 
+    top: 51%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    z-index: 1000;
+    text-align: center;
   }
 
   .scoreboard {

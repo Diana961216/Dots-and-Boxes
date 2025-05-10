@@ -125,6 +125,7 @@ const init = () => {
     turn = "X"
     isWinner = false
     isTie = false
+    document.querySelectorAll('.board-container [id^="box-"]').forEach(el => el.remove())
     render()
   }
 

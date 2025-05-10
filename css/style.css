@@ -7,7 +7,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #2E7D32;
+    color: #3A1F1F;
     padding: 40px 20px 0;
 
 }
@@ -184,7 +184,7 @@ h1 {
   .how-to,.instructions, .welcome {
   margin-top: 20px;
   font-size: 18px;
-  color: #2E7D32;
+  color: #3A1F1F;
   display: flex;
   justify-content: center;
   align-items: center;

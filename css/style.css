@@ -122,6 +122,8 @@ h1 {
     text-align: center;
     margin-top: 20px;
     gap: 500px;
+    left: 10%;
+    transform: translateX(-10%);
   }
 
   .player1-icon, .player2-icon {
@@ -131,6 +133,14 @@ h1 {
     margin-right: 10px;
     position: absolute;
     z-index: 2;
+  }
+  .player1-icon.active {
+    border: 2px solid #D32F2F;  
+    opacity: 1;
+  }
+  .player2-icon.active {
+    border: 2px solid #1976D2;  
+    opacity: 1;
   }
 
   .p1, .p2 {

@@ -96,6 +96,8 @@ const h1El = document.querySelector('h1')
 const welcomeEl = document.querySelector('.welcome')
 const howToPlayEl = document.querySelector('.how-to')
 const instructionsEl = document.querySelector('.instructions')
+const player1IconEl = document.querySelector('.player1-icon')
+const player2IconEl = document.querySelector('.player2-icon')
 
 
 
@@ -184,13 +186,24 @@ const drawLine = (index1, index2) => {
  
 };
 
+const showActivePlayer = () => {
+  if (turn === 'X') {
+    player1IconEl.classList.add('active')
+    player2IconEl.classList.remove('active')
+  } else {
+    player2IconEl.classList.add('active')
+    player1IconEl.classList.remove('active')
+  }
+}
+
 const changeTurn = () => {
     if (turn === 'X') {
-        turn = 'O'
+      turn = 'O'
     }
     else {
-        turn = 'X'
+      turn = 'X'
     }
+    showActivePlayer()
 }
 
 

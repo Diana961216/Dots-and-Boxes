@@ -98,6 +98,8 @@ const howToPlayEl = document.querySelector('.how-to')
 const instructionsEl = document.querySelector('.instructions')
 const player1IconEl = document.querySelector('.player1-icon')
 const player2IconEl = document.querySelector('.player2-icon')
+const resetButtonEl = document.querySelector('.reset-button')
+const scoreBoardEl = document.querySelector('.scoreboard')
 
 
 
@@ -309,16 +311,16 @@ resetButton.addEventListener('click', () => {
 })
 
 const gameOver = (winner = null) => {
-  if(isWinner || isTie){
+  if (isWinner || isTie) {
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
     allDots.forEach(dot => dot.classList.remove('clicked'))
     drawnLines.clear()
     score1El.textContent = `${score1El.textContent}`
     score2El.textContent = `${score2El.textContent}`
     gameBoardEl.style.display = 'none'
-       
+    resetButtonEl.style.display = 'none'
+    h1El.style.display = 'none'
 
-   
     gameOverText.classList.add('game-over-text')
     if (winner) {
       gameOverText.textContent = `${winner} wins!`
@@ -336,39 +338,51 @@ const gameOver = (winner = null) => {
       gameOverText.style.color = '#9E9E9E' 
     }
 
-    h1El.textContent = "Game Over"
-    h1El.style.fontSize = '2rem'
-    h1El.style.textAlign = 'center'
-    h1El.style.marginTop = '20px'
-    h1El.style.left = '51%'
+    const gameOverHeading = document.createElement('h1')
+    gameOverHeading.textContent = "Game Over"
+    gameOverHeading.style.fontSize = '2.5rem'                      // Adjusted: larger size
+    gameOverHeading.style.textAlign = 'center'
+    gameOverHeading.style.margin = '0'                             // Adjusted: clean vertical spacing
+    gameOverHeading.style.color = '#3A1F1F'                        // Adjusted: match your theme
+
     instructionsEl.style.display = 'none'
     howToPlayEl.style.display = 'none'
     welcomeEl.style.display = 'none'
 
-    document.body.appendChild(gameOverText)
-
     playAgainBtn.classList.add('play-again-btn')
     playAgainBtn.textContent = "Play Again"
-   
-    document.body.appendChild(playAgainBtn)
+
+    scoreBoardEl.classList.add('scoreboard--game-over')
+
+    const gameOverContainer = document.createElement('div')
+    gameOverContainer.classList.add('game-over-container')
+
+    // 🔧 Adjusted: Append heading first so it's at the top visually
+    gameOverContainer.appendChild(gameOverHeading)
+    gameOverContainer.appendChild(gameOverText)
+    gameOverContainer.appendChild(scoreBoardEl)
+    gameOverContainer.appendChild(playAgainBtn)
+    document.querySelector('.container').appendChild(gameOverContainer)
+
+    playAgainBtn.addEventListener('click', () => {
+      gameBoardEl.style.display = 'grid'
+      gameBoardEl.style.gridTemplateColumns = 'repeat(5, 1fr)'
+      gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
+      score1El.textContent = '0'
+      score2El.textContent = '0'
+      h1El.style.display = 'block'
+      instructionsEl.style.display = 'block'
+      howToPlayEl.style.display = 'block'
+      welcomeEl.style.display = 'block'
+      resetButtonEl.style.display = 'inline-block'
+      document.querySelector('.game-over-container')?.remove()
+      scoreBoardEl.classList.remove('scoreboard--game-over')
+      document.querySelector('.container').appendChild(scoreBoardEl)
+      gameOverText.remove()
+      playAgainBtn.remove()
+      init()
+    })
   }
-  
-  playAgainBtn.addEventListener('click', () => {
-    gameBoardEl .style.display = 'grid'
-    gameBoardEl.style.gridTemplateColumns = 'repeat(5, 1fr)'
-    gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
-    score1El.textContent = '0'
-    score2El.textContent = '0'
-    h1El.textContent = "Dots and Boxes"
-    instructionsEl.style.display = 'block'
-    howToPlayEl.style.display = 'block'
-    welcomeEl.style.display = 'block'
-    gameOverText.remove()
-    playAgainBtn.remove()
-    init()
-  })
 }
-
-
 
 /*----------------------------- Event Listeners -----------------------------*/

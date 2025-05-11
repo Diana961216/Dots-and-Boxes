@@ -61,6 +61,7 @@ let turn = 'X';
 let board = Array(25).fill(""); 
 let isWinner 
 let isTie
+let firstMove = false
 
 /*------------------------ Cached Element References ------------------------*/
 const gameBoardEl = document.querySelector('.game-board')
@@ -127,6 +128,7 @@ const init = () => {
     turn = "X"
     isWinner = false
     isTie = false
+    firstMove = false
     document.querySelectorAll('.board-container [id^="box-"]').forEach(el => el.remove())
     render()
   }
@@ -161,6 +163,12 @@ allDots.forEach(dot => {
 const drawLine = (index1, index2) => {
   const lineKey = [Math.min(index1, index2), Math.max(index1, index2)].join('-')
   if (drawnLines.has(lineKey)) return
+
+  if (!firstMove) {
+    showActivePlayer()
+    firstMove = true
+  }
+  
   drawnLines.add(lineKey);
   const dot1 = allDots[Number(index1)]
   const dot2 = allDots[Number(index2)]
@@ -380,6 +388,10 @@ const gameOver = (winner = null) => {
       document.querySelector('.container').appendChild(scoreBoardEl)
       gameOverText.remove()
       playAgainBtn.remove()
+      player1IconEl.classList.remove('active');
+      player2IconEl.classList.remove('active');
+      turn = 'X';
+      firstMove = false;
       init()
     })
   }

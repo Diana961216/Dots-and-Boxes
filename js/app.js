@@ -207,16 +207,67 @@ const showActivePlayer = () => {
   }
 }
 
-const changeTurn = () => {
-    if (turn === 'X') {
-      turn = 'O'
+const makeComputerMove = () => {
+  const possibleMoves = []
+  const scoringMoves = []
+
+  for (let i = 0; i < numDots; i++) {
+    for (let j = i + 1; j < numDots; j++) {
+      if (isAdjacent(i, j)) {
+        const key = [i, j].sort((a, b) => a - b).join('-')
+        if (!drawnLines.has(key)) {
+          possibleMoves.push([i, j])
+
+          let scorePotential = 0
+
+          boxLines.forEach((box) => {
+            const lineKeys = box.map(([a, b]) =>
+              [Math.min(a, b), Math.max(a, b)].join('-')
+            )
+            if (lineKeys.includes(key)) {
+              const alreadyDrawn = lineKeys.filter(k => drawnLines.has(k)).length
+              if (alreadyDrawn === 3) {
+                scorePotential++
+              }
+            }
+          })
+
+          if (scorePotential > 0) {
+            scoringMoves.push([i, j])
+          }
+        }
+      }
     }
-    else {
-      turn = 'X'
-    }
-    showActivePlayer()
+  }
+
+  if (scoringMoves.length > 0) {
+    const [index1, index2] = scoringMoves[Math.floor(Math.random() * scoringMoves.length)]
+    drawLine(index1, index2)
+    checkForBoxCompletion(index1, index2)
+    return
+  }
+
+  if (possibleMoves.length > 0) {
+    const [index1, index2] = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+    drawLine(index1, index2)
+    checkForBoxCompletion(index1, index2)
+  }
 }
 
+
+
+const changeTurn = () => {
+  if (turn === 'X') {
+    turn = 'O'
+    showActivePlayer()
+    setTimeout(() => {
+      makeComputerMove()
+    }, 500)
+  } else {
+    turn = 'X'
+    showActivePlayer()
+  }
+}
 
 const checkForBoxCompletion = (index1, index2) => {
   const currentPlayer = turn
@@ -236,8 +287,11 @@ const checkForBoxCompletion = (index1, index2) => {
 
   if (!boxCompleted) {
     changeTurn()
+  } else if (currentPlayer === 'O') {
+    setTimeout(() => {
+      makeComputerMove()
+    }, 500)
   }
-  
 }
 
 const fillBox = (box, boxIndex, player) => {

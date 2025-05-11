@@ -340,10 +340,10 @@ const gameOver = (winner = null) => {
 
     const gameOverHeading = document.createElement('h1')
     gameOverHeading.textContent = "Game Over"
-    gameOverHeading.style.fontSize = '2.5rem'                      // Adjusted: larger size
+    gameOverHeading.style.fontSize = '2.5rem'                      
     gameOverHeading.style.textAlign = 'center'
-    gameOverHeading.style.margin = '0'                             // Adjusted: clean vertical spacing
-    gameOverHeading.style.color = '#3A1F1F'                        // Adjusted: match your theme
+    gameOverHeading.style.margin = '0'                             
+    gameOverHeading.style.color = '#3A1F1F'                        
 
     instructionsEl.style.display = 'none'
     howToPlayEl.style.display = 'none'
@@ -357,7 +357,7 @@ const gameOver = (winner = null) => {
     const gameOverContainer = document.createElement('div')
     gameOverContainer.classList.add('game-over-container')
 
-    // 🔧 Adjusted: Append heading first so it's at the top visually
+    
     gameOverContainer.appendChild(gameOverHeading)
     gameOverContainer.appendChild(gameOverText)
     gameOverContainer.appendChild(scoreBoardEl)

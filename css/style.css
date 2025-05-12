@@ -281,4 +281,64 @@ h1 {
   left: 85%;
 }
 
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+body.dark .dot {
+  background-color: #e0e0e0;
+}
+
+body.dark .dot.clicked {
+  background-color: #ff6b6b;
+}
+
+body.dark .game-over-container {
+  background-color: #383838;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+body.dark h1,
+body.dark h2,
+body.dark .instructions,
+body.dark .welcome {
+  color: #f1f1f1;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark .instructions,
+body.dark .welcome {
+  color: #f1f1f1;
+}
+
+.switch-mode-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.switch-mode-btn img {
+  filter: drop-shadow(0 0 2px #000);
+}
+
+.game-over-container h1 {
+  color: #3A1F1F;
+}
+
+body.dark .game-over-container h1 {
+  color: #f1f1f1;
+}
+
 

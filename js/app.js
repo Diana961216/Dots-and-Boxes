@@ -99,7 +99,14 @@ const player1IconEl = document.querySelector('.player1-icon')
 const player2IconEl = document.querySelector('.player2-icon')
 const resetButtonEl = document.querySelector('.reset-button')
 const scoreBoardEl = document.querySelector('.scoreboard')
+const darkModeBtn = document.querySelector('.switch-mode-btn')
 
+
+const themeBtn = document.querySelector('.switch-mode-btn')
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
 
 const isAdjacent = (i1, i2) => {
   i1 = Number(i1)
@@ -410,8 +417,7 @@ const gameOver = (winner = null) => {
     gameOverHeading.style.fontSize = '2.5rem'                      
     gameOverHeading.style.textAlign = 'center'
     gameOverHeading.style.margin = '0'                             
-    gameOverHeading.style.color = '#3A1F1F'                        
-
+                      
     instructionsEl.style.display = 'none'
     howToPlayEl.style.display = 'none'
     welcomeEl.style.display = 'none'

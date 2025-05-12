@@ -8,6 +8,34 @@
 
 ---
 
+## Getting Started
+
+**Play here:**  
+[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes-Project)
+
+## Installation Instructions
+
+- Visit the deployed site in your browser
+- The game loads with a 5x5 grid by default
+- Click two adjacent dots to begin playing!
+
+---
+
+**Planning materials:**
+
+- [Trello Board](https://trello.com/b/5XCmM7b6/dots-and-boxes)
+- [GitHub Repository](https://github.com/Diana961216/Dots-and-boxes-planning)
+
+---
+
+## Attributions
+
+- [Moon Icon - Flaticon](https://www.flaticon.com/free-icons/dark-mode)
+- Player avatar icons from [CityPNG](https://www.citypng.com/)
+- Fonts provided by [Google Fonts](https://fonts.google.com/)
+
+---
+
 ## Technologies Used
 
 - **HTML5**
@@ -23,14 +51,6 @@ I started by creating the HTML structure and dynamically generating a grid of 25
 Once line drawing worked, I focused on box detection using a set of pre-defined dot groupings. I displayed player initials inside completed boxes using canvas text, and awarded extra turns when a box was claimed. I built a basic AI opponent that checks if it can complete a box; if not, it picks a random valid move.
 
 For user experience, I added a turn indicator using avatar highlights, a dark/light mode toggle button with icon support, and a styled game-over screen that displays the winner or a tie message. The reset button clears all canvas drawings, resets scores, and regenerates the board. All colors were tested for WCAG 2.0 AA accessibility, and UI components were styled with Flexbox and Grid.
-
----
-
-## Installation Instructions
-
-- Visit the deployed site in your browser
-- The game loads with a 5x5 grid by default
-- Click two adjacent dots to begin playing!
 
 ---
 
@@ -54,3 +74,4 @@ For user experience, I added a turn indicator using avatar highlights, a dark/li
 **[Trello Board](https://trello.com/b/5XCmM7b6/dots-and-boxes)**
 
 **[Git Hub](https://github.com/Diana961216/Dots-and-Boxes-Project)**
+**[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes-Project)**

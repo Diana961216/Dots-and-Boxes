@@ -11,7 +11,7 @@
 ## Getting Started
 
 **Play here:**  
-[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes-Project)
+[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes/)
 
 ## Installation Instructions
 
@@ -73,5 +73,5 @@ For user experience, I added a turn indicator using avatar highlights, a dark/li
 
 **[Trello Board](https://trello.com/b/5XCmM7b6/dots-and-boxes)**
 
-**[Git Hub](https://github.com/Diana961216/Dots-and-Boxes-Project)**
-**[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes-Project)**
+**[Git Hub](https://github.com/Diana961216/Dots-and-Boxes)**
+**[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes/)**

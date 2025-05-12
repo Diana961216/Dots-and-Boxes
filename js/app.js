@@ -1,4 +1,3 @@
-/*-------------------------------- Constants --------------------------------*/
 const drawnLines = new Set();
 const boxDotIndexes = [
   [0, 1, 5, 6],    
@@ -54,18 +53,17 @@ const boxLines = [
   [[27, 28], [28, 33], [32, 33], [27, 32]], 
   [[28, 29], [29, 34], [33, 34], [28, 33]], 
   [[30, 31], [31, 36], [35, 36], [30, 35]], 
-];
+]
 
-/*---------------------------- Variables (state) ----------------------------*/
+
 let turn = 'X';
-let board = Array(25).fill(""); 
+let board = Array(25).fill("")
 let isWinner 
 let isTie
 let firstMove = false
 
-/*------------------------ Cached Element References ------------------------*/
+
 const gameBoardEl = document.querySelector('.game-board')
-console.log(gameBoardEl)
 const allDots = []
 for (let i = 0; i < 25; i++) {
     const dot = document.createElement('div')
@@ -74,7 +72,7 @@ for (let i = 0; i < 25; i++) {
     allDots.push(dot)
     gameBoardEl.appendChild(dot)
 }
-console.log(allDots)
+
 
 const canvasElement = document.querySelector('canvas')
 const ctx = canvasElement.getContext('2d')
@@ -103,13 +101,6 @@ const resetButtonEl = document.querySelector('.reset-button')
 const scoreBoardEl = document.querySelector('.scoreboard')
 
 
-
-
-
-
-
-
-/*-------------------------------- Functions --------------------------------*/
 const isAdjacent = (i1, i2) => {
   i1 = Number(i1)
   i2 = Number(i2)
@@ -150,9 +141,7 @@ allDots.forEach(dot => {
       if (isAdjacent(selectedDots[0], selectedDots[1])) {
         drawLine(selectedDots[0], selectedDots[1])
         checkForBoxCompletion(selectedDots[0], selectedDots[1])
-      } else {
-        console.log('not adjacent')
-      }
+      } 
       selectedDots = []
       allDots.forEach(d => d.classList.remove('clicked'))
     }
@@ -175,7 +164,6 @@ const drawLine = (index1, index2) => {
 
   const rect1 = dot1.getBoundingClientRect()
   const rect2 = dot2.getBoundingClientRect()
-  console.log(rect1, rect2)
   const canvasRect = canvasElement.getBoundingClientRect()
 
   const x1 = rect1.left + rect1.width / 2 - canvasRect.left
@@ -254,8 +242,6 @@ const makeComputerMove = () => {
   }
 }
 
-
-
 const changeTurn = () => {
   if (turn === 'X') {
     turn = 'O'
@@ -332,7 +318,6 @@ const updateScore = (player) => {
 
 const checkForTie = () => {
   if (score1El.textContent === '8' && score2El.textContent === '8') {
-    console.log("It's a tie!")
     isTie = true
     gameOver()
     init()  
@@ -346,21 +331,18 @@ const checkForWinner = () => {
 
   if (score1 + score2 === totalBoxes) {
     if (score1 > score2) {
-      console.log('Player 1 wins!')
       isWinner = true
       gameOver('Player 1')
     } else if (score2 > score1) {
-      console.log('Player 2 wins!')
       isWinner = true
       gameOver('Player 2')
     } else {
-      console.log("It's a tie!")
       isTie = true
       gameOver()
     }
-    
   }
 }
+
 const resetScore = () => {
   score1El.textContent = '0'
   score2El.textContent = '0'
@@ -389,10 +371,10 @@ const restoreMainScreen = () => {
   document.querySelector('.container').appendChild(scoreBoardEl)
   gameOverText.remove()
   playAgainBtn.remove()
-  player1IconEl.classList.remove('active');
-  player2IconEl.classList.remove('active');
-  turn = 'X';
-  firstMove = false;
+  player1IconEl.classList.remove('active')
+  player2IconEl.classList.remove('active')
+  turn = 'X'
+  firstMove = false
 }
 
 const gameOver = (winner = null) => {
@@ -457,4 +439,4 @@ const gameOver = (winner = null) => {
   }
 }
 
-/*----------------------------- Event Listeners -----------------------------*/
+

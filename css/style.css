@@ -73,7 +73,7 @@ h1 {
   }
 
   .reset-button, .play-again-btn {
-    background-color: #2ECC71;
+    background-color: #27B861;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -86,7 +86,7 @@ h1 {
   
   .play-again-btn {
     all: unset;
-    background-color: #2ECC71;
+    background-color: #27B861;
     color: white;
     padding: 10px 20px;
     font-size: 16px;
@@ -302,12 +302,6 @@ body.dark .game-over-container {
   background-color: #383838;
   color: #fff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-}
-body.dark h1,
-body.dark h2,
-body.dark .instructions,
-body.dark .welcome {
-  color: #f1f1f1;
 }
 
 body.dark h1,

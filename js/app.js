@@ -135,7 +135,7 @@ const init = () => {
 
 
 const render = () => {
-    console.log('render');
+   if(firstMove)showActivePlayer()
 }
 
 
@@ -195,7 +195,7 @@ const drawLine = (index1, index2) => {
   }
   ctx.stroke()
  
-};
+}
 
 const showActivePlayer = () => {
   if (turn === 'X') {
@@ -361,16 +361,39 @@ const checkForWinner = () => {
     
   }
 }
+const resetScore = () => {
+  score1El.textContent = '0'
+  score2El.textContent = '0'
+}
 
 const resetButton = document.querySelector('.reset-button')
 resetButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
     allDots.forEach(dot => dot.classList.remove('clicked'))
     drawnLines.clear()
-    score1El.textContent = '0'
-    score2El.textContent = '0'
+    resetScore()
     init()
 })
+
+const restoreMainScreen = () => {
+  gameBoardEl.style.display = 'grid'
+  gameBoardEl.style.gridTemplateColumns = 'repeat(5, 1fr)'
+  gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
+  h1El.style.display = 'block'
+  instructionsEl.style.display = 'block'
+  howToPlayEl.style.display = 'block'
+  welcomeEl.style.display = 'block'
+  resetButtonEl.style.display = 'inline-block'
+  document.querySelector('.game-over-container')?.remove()
+  scoreBoardEl.classList.remove('scoreboard--game-over')
+  document.querySelector('.container').appendChild(scoreBoardEl)
+  gameOverText.remove()
+  playAgainBtn.remove()
+  player1IconEl.classList.remove('active');
+  player2IconEl.classList.remove('active');
+  turn = 'X';
+  firstMove = false;
+}
 
 const gameOver = (winner = null) => {
   if (isWinner || isTie) {
@@ -427,25 +450,8 @@ const gameOver = (winner = null) => {
     document.querySelector('.container').appendChild(gameOverContainer)
 
     playAgainBtn.addEventListener('click', () => {
-      gameBoardEl.style.display = 'grid'
-      gameBoardEl.style.gridTemplateColumns = 'repeat(5, 1fr)'
-      gameBoardEl.style.gridTemplateRows = 'repeat(5, 1fr)'
-      score1El.textContent = '0'
-      score2El.textContent = '0'
-      h1El.style.display = 'block'
-      instructionsEl.style.display = 'block'
-      howToPlayEl.style.display = 'block'
-      welcomeEl.style.display = 'block'
-      resetButtonEl.style.display = 'inline-block'
-      document.querySelector('.game-over-container')?.remove()
-      scoreBoardEl.classList.remove('scoreboard--game-over')
-      document.querySelector('.container').appendChild(scoreBoardEl)
-      gameOverText.remove()
-      playAgainBtn.remove()
-      player1IconEl.classList.remove('active');
-      player2IconEl.classList.remove('active');
-      turn = 'X';
-      firstMove = false;
+      restoreMainScreen()
+      resetScore()
       init()
     })
   }

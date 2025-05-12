@@ -1,4 +1,4 @@
-const drawnLines = new Set();
+const drawnLines = new Set()
 const boxDotIndexes = [
   [0, 1, 5, 6],    
   [1, 2, 6, 7],    

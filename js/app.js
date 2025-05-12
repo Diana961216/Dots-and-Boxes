@@ -76,12 +76,12 @@ for (let i = 0; i < 25; i++) {
 
 const canvasElement = document.querySelector('canvas')
 const ctx = canvasElement.getContext('2d')
-canvasElement.width = canvasElement.offsetWidth;
-canvasElement.height = canvasElement.offsetHeight;
+canvasElement.width = canvasElement.offsetWidth
+canvasElement.height = canvasElement.offsetHeight
 
 const boardContainerEl = document.querySelector('.board-container')
-canvasElement.width = boardContainerEl.offsetWidth;
-canvasElement.height = boardContainerEl.offsetHeight;
+canvasElement.width = boardContainerEl.offsetWidth
+canvasElement.height = boardContainerEl.offsetHeight
 
 const numDots = 25
 

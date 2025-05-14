@@ -359,7 +359,12 @@ const resetButton = document.querySelector('.reset-button')
 resetButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvasElement.width, canvasElement.height)
     allDots.forEach(dot => dot.classList.remove('clicked'))
+    player1IconEl.classList.remove('active')
+    player2IconEl.classList.remove('active')
+    turn = 'X'
+    firstMove = false
     drawnLines.clear()
+    
     resetScore()
     init()
 })

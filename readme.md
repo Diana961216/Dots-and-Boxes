@@ -46,7 +46,7 @@
 
 ## Approach Taken
 
-I started by creating the HTML structure and dynamically generating a grid of 25 dots using JavaScript. I used the <canvas> element to draw lines between selected dots and implemented logic to validate whether the two dots were adjacent. I stored drawn lines in a Set to prevent duplicates.
+I started by creating the HTML structure and dynamically generating a grid of 25 dots using JavaScript. I used the canvas element to draw lines between selected dots and implemented logic to validate whether the two dots were adjacent. I stored drawn lines in a Set to prevent duplicates.
 
 Once line drawing worked, I focused on box detection using a set of pre-defined dot groupings. I displayed player initials inside completed boxes using canvas text, and awarded extra turns when a box was claimed. I built a basic AI opponent that checks if it can complete a box; if not, it picks a random valid move.
 
@@ -74,4 +74,5 @@ For user experience, I added a turn indicator using avatar highlights, a dark/li
 **[Trello Board](https://trello.com/b/5XCmM7b6/dots-and-boxes)**
 
 **[Git Hub](https://github.com/Diana961216/Dots-and-Boxes)**
+
 **[ Live Game Deployment](https://diana961216.github.io/Dots-and-Boxes/)**
